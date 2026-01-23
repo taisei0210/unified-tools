@@ -1,0 +1,7 @@
+[server]
+# アップロード可能なファイルサイズの上限（2GB = 2048MB）
+maxUploadSize = 2048
+# メッセージサイズの上限も調整
+maxMessageSize = 2048
+
+

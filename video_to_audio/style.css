@@ -1,0 +1,401 @@
+/* Nano Banana Pro Theme - Enhanced CSS */
+
+/* Global Settings */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+html,
+body,
+[class*="css"] {
+    font-family: 'Inter', sans-serif;
+    color: #FAFAFA;
+}
+
+/* Base App Background with Animated Gradient */
+.stApp {
+    background: linear-gradient(135deg, #0E1117 0%, #1a1d29 50%, #0E1117 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 15s ease infinite;
+    position: relative;
+}
+
+.stApp::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 215, 0, 0.03) 0%, transparent 50%);
+    z-index: 0;
+    pointer-events: none;
+    animation: pulse 20s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+/* Custom Containers (Cards) */
+.css-1r6slb0,
+.css-12oz5g7 {
+    padding: 1rem;
+}
+
+/* Container Wrapper for content */
+.custom-container {
+    background: linear-gradient(135deg, rgba(38, 39, 48, 0.95) 0%, rgba(30, 31, 40, 0.95) 100%);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 215, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    margin-bottom: 2rem;
+    border: 2px solid rgba(255, 215, 0, 0.25);
+    backdrop-filter: blur(15px);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.8s ease-out backwards;
+}
+
+.custom-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.15), transparent);
+    transition: left 0.6s ease;
+}
+
+.custom-container::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, transparent, rgba(255, 215, 0, 0.05), transparent, rgba(255, 215, 0, 0.05), transparent);
+    animation: rotate 20s linear infinite;
+    pointer-events: none;
+}
+
+.custom-container:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 15px 60px rgba(0, 0, 0, 0.6),
+                0 0 0 1px rgba(255, 215, 0, 0.4),
+                0 0 40px rgba(255, 215, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 215, 0, 0.5);
+}
+
+.custom-container:hover::before {
+    left: 100%;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Headers */
+h1 {
+    font-weight: 800 !important;
+    background: linear-gradient(120deg, #FFD700, #F4D03F, #FFFFFF, #FFD700);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem !important;
+    animation: shimmer 3s linear infinite;
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+    position: relative;
+}
+
+@keyframes shimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+h2,
+h3 {
+    color: #FFD700 !important;
+    font-weight: 600 !important;
+    text-shadow: 0 2px 10px rgba(255, 215, 0, 0.2);
+}
+
+/* Buttons */
+.stButton>button {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.05) 100%) !important;
+    color: #FFD700 !important;
+    border: 2px solid #FFD700 !important;
+    border-radius: 12px !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    padding: 0.75rem 1.5rem !important;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+.stButton>button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 215, 0, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.8s, height 0.8s;
+    z-index: 0;
+}
+
+.stButton>button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+    z-index: 1;
+}
+
+.stButton>button span {
+    position: relative;
+    z-index: 2;
+}
+
+.stButton>button:hover {
+    background: linear-gradient(135deg, #FFD700 0%, #F4D03F 100%) !important;
+    color: #0E1117 !important;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.7),
+                0 0 60px rgba(255, 215, 0, 0.4),
+                0 8px 25px rgba(0, 0, 0, 0.3) !important;
+    transform: translateY(-3px) scale(1.05);
+    border-color: transparent !important;
+}
+
+.stButton>button:hover::before {
+    width: 400px;
+    height: 400px;
+}
+
+.stButton>button:hover::after {
+    left: 100%;
+}
+
+.stButton>button:active {
+    transform: scale(0.98) translateY(-1px);
+}
+
+/* Primary Button Override (if using type="primary") */
+.stButton>button[kind="primary"] {
+    background: linear-gradient(135deg, #FFD700 0%, #F4D03F 100%) !important;
+    color: #0E1117 !important;
+    border: none !important;
+    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.4),
+                0 0 0 0 rgba(255, 215, 0, 0.7) !important;
+    animation: pulseButton 2s ease-in-out infinite;
+}
+
+@keyframes pulseButton {
+    0%, 100% {
+        box-shadow: 0 4px 20px rgba(255, 215, 0, 0.4),
+                    0 0 0 0 rgba(255, 215, 0, 0.7);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(255, 215, 0, 0.6),
+                    0 0 0 10px rgba(255, 215, 0, 0);
+    }
+}
+
+.stButton>button[kind="primary"]:hover {
+    background: linear-gradient(135deg, #F4D03F 0%, #FFD700 100%) !important;
+    box-shadow: 0 6px 30px rgba(255, 215, 0, 0.6),
+                0 0 0 0 rgba(255, 215, 0, 0.7) !important;
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* File Uploader */
+.stFileUploader {
+    background: linear-gradient(135deg, rgba(38, 39, 48, 0.7) 0%, rgba(30, 31, 40, 0.7) 100%);
+    border-radius: 20px;
+    padding: 2.5rem;
+    border: 3px dashed rgba(255, 215, 0, 0.4);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.stFileUploader::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 215, 0, 0.08) 50%, transparent 70%);
+    background-size: 200% 200%;
+    animation: slide 4s linear infinite;
+}
+
+.stFileUploader::after {
+    content: '📁';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    opacity: 0.1;
+    pointer-events: none;
+    animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes slide {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 200% 200%; }
+}
+
+.stFileUploader:hover {
+    border-color: #FFD700;
+    border-width: 3px;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.3),
+                inset 0 0 30px rgba(255, 215, 0, 0.08),
+                0 10px 40px rgba(0, 0, 0, 0.4);
+    transform: scale(1.02) translateY(-2px);
+    background: linear-gradient(135deg, rgba(38, 39, 48, 0.8) 0%, rgba(30, 31, 40, 0.8) 100%);
+}
+
+.stFileUploader:hover::after {
+    opacity: 0.2;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Success/Info Messages */
+.stSuccess,
+.stInfo {
+    background-color: rgba(255, 215, 0, 0.1) !important;
+    border-left-color: #FFD700 !important;
+    color: #FAFAFA !important;
+}
+
+/* Metrics */
+[data-testid="stMetricValue"] {
+    color: #FFD700 !important;
+    font-weight: 700 !important;
+    font-size: 1.5rem !important;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    animation: numberPop 0.5s ease-out;
+}
+
+@keyframes numberPop {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+[data-testid="stMetricLabel"] {
+    color: #AAAAAA !important;
+    font-weight: 500 !important;
+}
+
+/* Divider */
+hr {
+    border-color: #363945 !important;
+    margin: 3rem 0 !important;
+}
+
+/* Spinner */
+.stSpinner>div {
+    border-top-color: #FFD700 !important;
+    border-width: 3px !important;
+    animation: spin 1s linear infinite !important;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Progress Bar Enhancements */
+[data-testid="stProgressBar"] > div > div {
+    background: linear-gradient(90deg, #FFD700 0%, #F4D03F 50%, #FFD700 100%) !important;
+    background-size: 200% auto !important;
+    animation: progressShimmer 2s linear infinite !important;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5) !important;
+}
+
+@keyframes progressShimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+/* Success Messages */
+.stSuccess {
+    animation: successSlide 0.5s ease-out !important;
+    border-left-width: 4px !important;
+}
+
+@keyframes successSlide {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Main Container */
+.main-container {
+    position: relative;
+    z-index: 1;
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
